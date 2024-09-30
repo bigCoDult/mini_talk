@@ -14,6 +14,7 @@ SRC = \
 
 OBJ = $(SRC:.c=.o)
 
+
 all: $(CLIENT) $(SERVER)
 
 $(LIBFT):
