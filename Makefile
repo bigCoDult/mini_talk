@@ -8,9 +8,9 @@ LDFLAGS = -L$(LIBFT_DIR) -lft
 LIBFT = $(LIBFT_DIR)/libft.a
 INC = -I$(LIBFT_DIR)
 
-SRC = \
-			client.c \
-			server.c \
+# SRC = \
+# 			client.c \
+# 			server.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -20,11 +20,15 @@ all: $(CLIENT) $(SERVER)
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-$(CLENT): $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $(CLIENT)
+# $(CLENT): $(LIBFT) $(OBJ)
+# 	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $(CLIENT)
+$(CLENT): $(LIBFT) $(OBJ)?
+	$(CC) $(CFLAGS) client.o $(LDFLAGS) -o $(CLIENT)
 
-$(SERVER): $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $(SERVER)
+# $(SERVER): $(LIBFT) $(OBJ)
+# 	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $(SERVER)
+$(SERVER): $(LIBFT) $(OBJ)?
+	$(CC) $(CFLAGS) server.o $(LDFLAGS) -o $(SERVER)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
