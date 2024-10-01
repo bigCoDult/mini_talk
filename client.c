@@ -88,9 +88,9 @@ int	*ft_atob(char *str)
 		while ((k + 1) % 8 != 0)
 		{
 			if ((tmp_str[i] & 1) == 1)
-				bit[k] = SIGUSR1;
+				bit[k] = 1;
 			else if ((tmp_str[i] & 1) == 0)
-				bit[k] = SIGUSR2;
+				bit[k] = 0;
 			k++;
 			tmp_str[i] = tmp_str[i] >> 1;
 		}
@@ -108,9 +108,9 @@ int send_bit(pid_t server_pid, int *bit)
 	i = 0;
 	while (bit[i] != -1)
 	{
-		if (bit[i] == SIGUSR1)
+		if (bit[i] == 1)
 			kill(server_pid, SIGUSR1);
-		else if (bit[i] == SIGUSR2)
+		else if (bit[i] == 0)
 			kill(server_pid, SIGUSR2);
 		else
 			return (-1);
