@@ -35,6 +35,7 @@ typedef struct s_etc
 	char					*string;
 	long long unsigned int	*ads;
 }	t_etc;
+
 typedef struct s_min_info
 {
 	int		minus_flag;
