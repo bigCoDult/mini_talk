@@ -8,37 +8,35 @@ LDFLAGS = -L$(LIBFT_DIR) -lft
 LIBFT = $(LIBFT_DIR)/libft.a
 INC = -I$(LIBFT_DIR)
 
-# SRC = \
-# 			client.c \
-# 			server.c \
+SRC_SERVER = \
+							server.c \
 
-OBJ = $(SRC:.c=.o)
+SRC_CLIENT = \
+							client.c \
 
+OBJ_SERVER = $(SRC_SERVER:.c=.o)
+OBJ_CLIENT = $(SRC_CLIENT:.c=.o)
 
-all: $(CLIENT) $(SERVER)
+all: $(SERVER) $(CLIENT)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-# $(CLENT): $(LIBFT) $(OBJ)
-# 	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $(CLIENT)
-$(CLENT): $(LIBFT) $(OBJ)?
-	$(CC) $(CFLAGS) client.o $(LDFLAGS) -o $(CLIENT)
+$(SERVER): $(LIBFT) $(OBJ_SERVER)
+	$(CC) $(CFLAGS) $(OBJ_SERVER) $(LDFLAGS) -o $(SERVER)
 
-# $(SERVER): $(LIBFT) $(OBJ)
-# 	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $(SERVER)
-$(SERVER): $(LIBFT) $(OBJ)?
-	$(CC) $(CFLAGS) server.o $(LDFLAGS) -o $(SERVER)
+$(CLIENT): $(LIBFT) $(OBJ_CLIENT)
+	$(CC) $(CFLAGS) $(OBJ_CLIENT) $(LDFLAGS) -o $(CLIENT)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ_SERVER) $(OBJ_CLIENT)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 
 fclean: clean
-	$(RM) $(CLENT) $(SERVER)
+	$(RM) $(SERVER) $(CLIENT)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
