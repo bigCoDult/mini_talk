@@ -7,5 +7,8 @@
 # include <signal.h>
 # include <sched.h>
 
+# define SIGUSR1 1
+# define SIGUSR2 0
+
 
 #endif /* MINI_TALK_H */
