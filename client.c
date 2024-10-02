@@ -6,7 +6,7 @@
 /*   By: sanbaek <sanbaek@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 13:25:36 by sanbaek           #+#    #+#             */
-/*   Updated: 2024/10/02 13:25:37 by sanbaek          ###   ########.fr       */
+/*   Updated: 2024/10/02 13:43:16 by sanbaek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*send_string(pid_t server_pid, char *str)
 				kill(server_pid, SIGUSR1);
 			else
 				kill(server_pid, SIGUSR2);
-			usleep(50);
+			usleep(400);
 			bit_up--;
 		}
 		i++;
