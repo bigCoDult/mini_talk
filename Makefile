@@ -29,7 +29,7 @@ $(CLIENT): $(LIBFT) $(OBJ_CLIENT)
 	$(CC) $(CFLAGS) $(OBJ_CLIENT) $(LDFLAGS) -o $(CLIENT)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INC) -c $? -o $@
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ_SERVER) $(OBJ_CLIENT)
