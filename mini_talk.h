@@ -7,8 +7,15 @@
 # include <signal.h>
 # include <sched.h>
 
-# define SIGUSR1 1
-# define SIGUSR2 0
+typedef struct s_byte
+{
+	unsigned char	byte;
+	int				received_bit;
+}	t_byte;
+
+int		validate_str(char *str);
+char	*send_string(pid_t server_pid, char *str);
+void	combine_bit(int sig);
 
 
 #endif /* MINI_TALK_H */
