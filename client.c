@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sanbaek <sanbaek@student.42gyeongsan.kr    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 17:11:01 by sanbaek           #+#    #+#             */
-/*   Updated: 2024/10/01 18:49:44 by sanbaek          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "mini_talk.h"
 
 int	main(int argc, char **argv)
@@ -19,7 +7,7 @@ int	main(int argc, char **argv)
 		write(2, "Error\n: improper argc\n", 23);
 		return (1);
 	}
-	if (validate_str(argv[2]))
+	if (!validate_str(argv[2]))
 		return (1);
 	send_string((pid_t)ft_atoi(argv[1]), argv[2]);
 	return (0);
@@ -50,30 +38,29 @@ int	validate_str(char *str)
 char	*send_string(pid_t server_pid, char *str)
 {
 	int	i;
-	int	k;
 	int	bit_up;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
-		k = 0;
 		bit_up = 7;
-		while (k < 8)
+		while (bit_up >= 0)
 		{
-			if ((str[i] & 1 << bit_up) == 1)
+			// if ((str[i] & (1 << bit_up)) == 1)
+			if ((str[i] & (1 << bit_up)) != 0)
 			{
-				write(1, "1", 1);
+				write(1, "1\n", 2);
 				kill(server_pid, SIGUSR1);
 			}
-			else if ((str[i] & 1 << bit_up) == 0)
+			else
 			{
-				write(1, "0", 1);
+				write(1, "0\n", 2);
 				kill(server_pid, SIGUSR2);
 			}
 			usleep(50);
-			k++;
 			bit_up--;
 		}
+		i++;
 	}
 	return (str);
 }
