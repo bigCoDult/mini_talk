@@ -6,7 +6,7 @@
 /*   By: sanbaek <sanbaek@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 13:25:36 by sanbaek           #+#    #+#             */
-/*   Updated: 2024/10/02 13:43:16 by sanbaek          ###   ########.fr       */
+/*   Updated: 2024/10/03 05:11:44 by sanbaek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,32 +19,10 @@ int	main(int argc, char **argv)
 		write(2, "Error\n: improper argc\n", 23);
 		return (1);
 	}
-	if (!validate_str(argv[2]))
+	if (!validate_pid(argv[1]))
 		return (1);
 	send_string((pid_t)ft_atoi(argv[1]), argv[2]);
 	return (0);
-}
-
-int	validate_str(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str == NULL)
-	{
-		write(2, "Error\n: null string\n", 21);
-		return (0);
-	}
-	while (str[i] != '\0')
-	{
-		if (ft_isprint(str[i]) == 0)
-		{
-			write(2, "Error\n: non-printable character\n", 33);
-			return (0);
-		}
-		i++;
-	}
-	return (1);
 }
 
 char	*send_string(pid_t server_pid, char *str)
@@ -68,4 +46,28 @@ char	*send_string(pid_t server_pid, char *str)
 		i++;
 	}
 	return (str);
+}
+
+int	validate_pid(char *str)
+{
+	if (cmp_itoa_atoi(str) == 0)
+		return (1);
+	else
+	{
+		write(2, "Error\n: invalid PID\n", 21);
+		return (0);
+	}
+}
+
+int	cmp_itoa_atoi(char *str)
+{
+	int		num;
+	int		cmp_result;
+	char	*tmp_str;
+
+	num = ft_atoi(str);
+	tmp_str = ft_itoa(num);
+	cmp_result = ft_memcmp(str, tmp_str, ft_strlen(str));
+	free(tmp_str);
+	return (cmp_result);
 }
