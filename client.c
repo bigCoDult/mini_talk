@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sanbaek <sanbaek@student.42gyeongsan.kr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/02 13:25:36 by sanbaek           #+#    #+#             */
+/*   Updated: 2024/10/02 13:25:37 by sanbaek          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini_talk.h"
 
 int	main(int argc, char **argv)
@@ -46,17 +58,10 @@ char	*send_string(pid_t server_pid, char *str)
 		bit_up = 7;
 		while (bit_up >= 0)
 		{
-			// if ((str[i] & (1 << bit_up)) == 1)
 			if ((str[i] & (1 << bit_up)) != 0)
-			{
-				write(1, "1\n", 2);
 				kill(server_pid, SIGUSR1);
-			}
 			else
-			{
-				write(1, "0\n", 2);
 				kill(server_pid, SIGUSR2);
-			}
 			usleep(50);
 			bit_up--;
 		}
