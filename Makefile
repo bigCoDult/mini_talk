@@ -1,7 +1,7 @@
 CLIENT = client
 SERVER = server
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -O0
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 LIBFT_DIR = ./libft
 LDFLAGS = -L$(LIBFT_DIR) -lft
