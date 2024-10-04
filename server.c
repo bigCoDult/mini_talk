@@ -6,19 +6,11 @@
 /*   By: sanbaek <sanbaek@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 13:46:04 by sanbaek           #+#    #+#             */
-/*   Updated: 2024/10/02 13:46:18 by sanbaek          ###   ########.fr       */
+/*   Updated: 2024/10/04 13:00:41 by sanbaek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_talk.h"
-
-/*
-The server must be started first.
-After its launch, it has to print its PID
-Declaration and an initialisation cannot be on the same line,
-except for global variables (when allowed),
-static variables, and constants.
-*/
 
 t_byte	g_byte;
 
