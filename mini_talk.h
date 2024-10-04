@@ -6,7 +6,7 @@
 /*   By: sanbaek <sanbaek@student.42gyeongsan.kr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 13:46:47 by sanbaek           #+#    #+#             */
-/*   Updated: 2024/10/03 05:03:51 by sanbaek          ###   ########.fr       */
+/*   Updated: 2024/10/04 12:56:36 by sanbaek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "libft.h"
 # include <unistd.h>
 # include <signal.h>
-# include <sched.h>
 
 typedef struct s_byte
 {
